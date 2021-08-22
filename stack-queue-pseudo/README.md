@@ -13,7 +13,8 @@ Arguments: none
 
 
 ## Whiteboard Process
-![Stack Queue](stack-queue2.pmg)
+![stackqueue2](stackqueue2.png "Reverse")
+
 
 
 ##  Approach & Efficiency
