@@ -1,11 +1,14 @@
 # Challenge Summary
-Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
+Quick Sort algorithm follows Divide and Conquer approach. It divides elements into smaller parts based on some condition and performing the sort operations on those divided smaller parts.
 
 ## Whiteboard Process
-![1](1.png)
-![2](2.png)
-![3](3.png)
-![4](4.png)
+![q1](q1.png)
+![q2](q2.png)
+![q3](q3.png)
+![q5](q5.png)
+![q6](q6.png)
+![q7](q7.png)
+![q8](q8.png)
 
 ## Approach & Efficiency
 
@@ -14,11 +17,6 @@ Auxiliary Space: O(1)
 Boundary Cases: Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.
 
 ## Solution
-INPUT: 
-
-[12, 11, 13, 5, 6 ]; 
-
-OUTPUT:
-
-[5, 6, 11, 12, 13 ]; 
-
+                    var items = [5,3,7,6,2,9];
+                    console.log(items.sort());
+                    //prints [2, 3, 5, 6, 7, 9]
