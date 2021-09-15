@@ -1,22 +1,19 @@
 # Challenge Summary
-Quick Sort algorithm follows Divide and Conquer approach. It divides elements into smaller parts based on some condition and performing the sort operations on those divided smaller parts.
+Like QuickSort, Merge Sort is a Divide and Conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves. The merge(arr, l, m, r) is a key process that assumes that arr[l..m] and arr[m+1..r] are sorted and merges the two sorted sub-arrays into one. See the following C implementation for details.
 
 ## Whiteboard Process
-![q1](q1.png)
-![q2](q2.png)
-![q3](q3.png)
-![q5](q5.png)
-![q6](q6.png)
-![q7](q7.png)
-![q8](q8.png)
+![merge-sort](merge-sort.png)
 
 ## Approach & Efficiency
 
-Time Complexity: O(n^2) 
-Auxiliary Space: O(1)
-Boundary Cases: Insertion sort takes maximum time to sort if elements are sorted in reverse order. And it takes minimum time (Order of n) when elements are already sorted.
+Time Complexity: Sorting arrays on different machines. Merge Sort is a recursive algorithm and time complexity can be expressed as following recurrence relation. 
+T(n) = 2T(n/2) + θ(n)
+
+The above recurrence can be solved either using the Recurrence Tree method or the Master method. It falls in case II of Master Method and the solution of the recurrence is θ(nLogn). Time complexity of Merge Sort is  θ(nLogn) in all 3 cases (worst, average and best) as merge sort always divides the array into two halves and takes linear time to merge two halves.
+Auxiliary Space: O(n)
 
 ## Solution
-                    var items = [5,3,7,6,2,9];
-                    console.log(items.sort());
-                    //prints [2, 3, 5, 6, 7, 9]
+Given array is 
+12 11 13 5 6 7 
+Sorted array is 
+5 6 7 11 12 13
