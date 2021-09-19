@@ -76,25 +76,6 @@ class HashMap {
     }
 }
 
-// code challenge 31
-function repeatedWord(paragraph) {
-    if (!paragraph) {
-        return 'Empty paragraph!';
-    }
-
-    let hashMap = new HashMap(2000);
-    let words = paragraph.toLowerCase().split(',').join('').split(' ');
-
-    for (let i = 0; i < words.length; i++) {
-        if (hashMap.contains(words[i])) {
-            return words[i];
-        } else {
-            hashMap.add(words[i]);
-        }
-    }
-    return 'The paragraph has no repeated words!';
-}
-
 
 
 module.exports = { Node, LinkedList, HashMap, repeatedWord }
