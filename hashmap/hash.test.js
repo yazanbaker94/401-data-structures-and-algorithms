@@ -1,5 +1,5 @@
 const HashMap = require('./index').HashMap;
-const repeatedWord = require('./index').repeatedWord;
+
 const leftJoins = require('./index').leftJoins;
 
 
@@ -33,4 +33,23 @@ describe('HashMap Tests', () => {
   })
 });
 
+describe('Left Joins Test', () => {
+  const hashMap1 = new HashMap(2000);
+  hashMap1.add('Club', 'Real Madrid');
+  hashMap1.add('CL CUPS', '13');
+
+  const hashMap2 = new HashMap(2000);
+  hashMap2.add('Club', 'PSG');
+  hashMap2.add('CUPS', '2');
+
+
+  it('successfully return correct result', () => {
+    expect(leftJoins(hashMap1, hashMap2)).toEqual(
+      [
+        ["CL CUPS", "13", null,],
+        ["Club", "Real Madrid", ["PSG",],],
+      ]
+    );
+  });
+});
 
