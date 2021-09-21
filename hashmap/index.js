@@ -78,4 +78,28 @@ class HashMap {
 
 
 
-module.exports = { Node, LinkedList, HashMap, repeatedWord }
+function leftJoins(hashMap1, hashMap2) {
+    let Array1 = [];
+
+    for (let i = 0; i < hashMap1.storage.length; i++) {
+        if (hashMap1.storage[i] !== undefined) {
+            let Array2 = [];
+            let key = (Object.keys(hashMap1.storage[i].head.value)[0]);
+            Array2.push(key);
+            Array2.push(hashMap1.storage[i].head.value[key]);
+            if (hashMap2.contains(key)) {
+                Array2.push(hashMap2.get(key));
+            } else {
+                Array2.push(null);
+            }
+            Array1.push(Array2);
+        }
+    }
+    return Array1;
+}
+
+
+
+
+
+module.exports = { Node, LinkedList, HashMap, leftJoins}
