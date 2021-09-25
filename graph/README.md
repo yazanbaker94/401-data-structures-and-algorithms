@@ -25,4 +25,4 @@ Returns the total number of nodes in the graph
 
 TEST:
 
-![graphtest](graphtest.png)
+![graphtests](graphtests.PNG)
