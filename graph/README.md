@@ -13,4 +13,4 @@ Display the collection
 
 TEST:
 
-![GRAPH-breadth](GRAPH-breadth.PNG)
+![GRAPH-breadth](GRAPH-breadth.png)
