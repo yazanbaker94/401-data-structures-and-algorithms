@@ -2,7 +2,7 @@
 Write a function called reverseArray which takes an array as an argument. Without utilizing any of the built-in methods available to your language, return an array with elements in reversed order.
 
 ## Whiteboard Process
-![Array in Reverse](array-reverse.png "Reverse")
+![Array in Reverse](array-reversee.png "Reverse")
 
 
 ## Approach & Efficiency
