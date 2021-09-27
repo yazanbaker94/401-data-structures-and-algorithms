@@ -1,15 +1,12 @@
-## GRAPH BREADTH SEARCH
+## GRAPH BUSINESS TRIP
 Feature Tasks
-Write the following method for the Graph class:
-
-breadth first
-Arguments: Node
-Return: A collection of nodes in the order they were visited.
-Display the collection
-
+Write a function called business trip
+Arguments: graph, array of city names
+Return: cost or null
+Determine whether the trip is possible with direct flights, and how much it would cost.
 
 
 
 TEST:
 
-![GRAPH-breadth](GRAPH-breadths.png)
+![businesstrip](businesstrip.png)
