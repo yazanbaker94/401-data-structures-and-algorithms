@@ -1,72 +1,54 @@
-// DATA
-const airports = 'PHX BKK OKC JFK LAX MEX EZE HEL LOS LAP LIM'.split(' ');
+'use strict';
 
-const routes = [
-    ['PHX', 'LAX'],
-    ['PHX', 'JFK'],
-    ['JFK', 'OKC'],
-    ['JFK', 'HEL'],
-    ['JFK', 'LOS'],
-    ['MEX', 'LAX'],
-    ['MEX', 'BKK'],
-    ['MEX', 'LIM'],
-    ['MEX', 'EZE'],
-    ['LIM', 'BKK'],
-];
+const Edge = require('./edge');
 
-
-// The graph
-const adjacencyList = new Map();
-
-// Add node
-function addNode(airport) {
-    adjacencyList.set(airport, []);
-}
-
-// Add edge, undirected
-function addEdge(origin, destination) {
-    adjacencyList.get(origin).push(destination);
-    adjacencyList.get(destination).push(origin);
-}
-
-// Create the Graph
-airports.forEach(addNode);
-routes.forEach(route => addEdge(...route))
-
-
-
-function bfs(start) {
-
-  const visited = new Set();
-
-  const queue = [start]
-
-
-  while (queue.length > 0) {
-
-      const airport = queue.shift(); // mutates the queue
-
-      const destinations = adjacencyList.get(airport);
-
-
-      for (const destination of destinations) {
-;
-
-          if (destination === 'BKK')  {
-              console.log(`BFS found Bangkok!`)
-          }
-
-          if (!visited.has(destination)) {
-              visited.add(destination);
-              queue.push(destination);
-          }
-         
-      }
-
-      
+class Graph {
+  constructor() {
+    this._adjacencyList = new Map();
   }
 
+  addVertex(vertex) {
+    this._adjacencyList.set(vertex, []);
+    return vertex;
+  }
+
+  addEdge(startVertex, endVertex, weight) {
+    if (
+      !this._adjacencyList.has(startVertex) ||
+      !this._adjacencyList.has(endVertex)
+    ) {
+      return 'INVALID NODE';
+      // throw new Error('INVALID NODE');
+    } else {
+      const adjacencies = this._adjacencyList.get(startVertex);
+      const edge = new Edge(endVertex, weight);
+      adjacencies.push(edge);
+      return edge;
+    }
+  }
+
+  getNeighbors(vertex) {
+    if (!this._adjacencyList.has(vertex)) {
+      return 'INVALID NODE';
+      // throw new Error('INVALID NODE');
+    } else {
+      return this._adjacencyList.get(vertex);
+    }
+  }
+
+  getNodes() {
+    return this._adjacencyList.entries();
+  }
+
+  getSize() {
+    return this._adjacencyList.size > 0 ? this._adjacencyList.size : null;
+  }
+
+  printAll() {
+    for (const [vertex, edge] of this._adjacencyList.entries()) {
+      console.log([vertex, edge]);
+    }
+  }
 }
 
-bfs('PHX')
-
+module.exports = Graph;
