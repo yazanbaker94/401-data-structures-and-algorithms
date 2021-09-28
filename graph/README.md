@@ -1,12 +1,11 @@
-## GRAPH BUSINESS TRIP
-Feature Tasks
-Write a function called business trip
-Arguments: graph, array of city names
-Return: cost or null
-Determine whether the trip is possible with direct flights, and how much it would cost.
+## GRAPH DEPTH FIRST
+Write the following method for the Graph class:
 
-
+depth first
+Arguments: Node (Starting point of search)
+Return: A collection of nodes in their pre-order depth-first traversal order
+Display the collection
 
 TEST:
 
-![businesstrip](businesstrip.png)
+![depth-first](depth-first.png)
