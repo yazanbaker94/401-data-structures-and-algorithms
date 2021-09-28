@@ -1,40 +1,84 @@
 'use strict';
 
-const Graph = require('../graph');
-const businessTrip = require('../businessTrip');
+const DepthFirst = require('../depth-first');
+const Vertex = require('../vertex');
 
-const graph = new Graph();
+describe('Graph Depth Test', () => {
+  it('should return all nodes depth first properly', () => {
+    const graph = new DepthFirst();
 
-let Pandora = graph.addVertex('Pandora');
-let Metroville = graph.addVertex('Metroville');
-let Narnia = graph.addVertex('Narnia');
-let Arendelle = graph.addVertex('Arendelle');
-let Naboo = graph.addVertex('Naboo');
-let Monstropolis = graph.addVertex('Monstropolis');
+    const ten = new Vertex(10);
+    const two = new Vertex(2);
+    const six = new Vertex(6);
+    const three = new Vertex(3);
+    const seven = new Vertex(7);
+    const eight = new Vertex(8);
 
-graph.addEdge(Pandora, Arendelle, 150);
-graph.addEdge(Pandora, Metroville, 82);
-graph.addEdge(Metroville, Arendelle, 99);
-graph.addEdge(Narnia, Metroville, 37);
-graph.addEdge(Metroville, Naboo, 26);
-graph.addEdge(Narnia, Naboo, 250);
-graph.addEdge(Metroville, Monstropolis, 105);
-graph.addEdge(Monstropolis, Naboo, 73);
-graph.addEdge( Arendelle,Monstropolis, 42);
+    const expectedSet = new Set();
+    expectedSet.add(ten);
+    expectedSet.add(two);
+    expectedSet.add(seven);
+    expectedSet.add(six);
+    expectedSet.add(eight);
+    expectedSet.add(three);
 
-const graph2 = new Graph();
-const Herbalife = graph2.addVertex('Herbalife');
+    graph.addVertex(ten);
+    graph.addVertex(two);
+    graph.addVertex(six);
+    graph.addVertex(three);
+    graph.addVertex(seven);
+    graph.addVertex(eight);
 
-describe('Get Edge Test', () => {
-  it('should return true and the weight if a path exists', () => {
-    expect(businessTrip(graph, [Pandora, Metroville])).toEqual('true, $82');
-    expect(businessTrip(graph, [Arendelle, Monstropolis, Naboo])).toEqual('true, $115');
+    graph.addEdge(ten, two);
+    graph.addEdge(ten, six);
+    graph.addEdge(ten, three);
+    graph.addEdge(ten, seven);
+    graph.addEdge(two, seven);
+    graph.addEdge(six, seven);
+    graph.addEdge(six, eight);
+    graph.addEdge(three, eight);
+    graph.addEdge(eight, seven);
+    // expect(graph.depth(ten)).toEqual([10, 2, 7, 6, 8, 3]);
+    expect(graph.depth(ten)).toEqual(expectedSet);
   });
-  it('should retrun false if a path doesn\'t exist', () => {
-    expect(businessTrip(graph, [Naboo, Pandora])).toBe('false, $0');
-    expect(businessTrip(graph, [Narnia, Arendelle, Naboo])).toBe('false, $0');
+  it('should return all nodes depth first properly', () => {
+    const graph = new DepthFirst();
+
+    const Pandora = new Vertex('Pandora');
+    const Arendelle = new Vertex('Arendelle');
+    const Metroville = new Vertex('Metroville');
+    const Monstroplolis = new Vertex('Monstroplolis');
+    const Narnia = new Vertex('Narnia');
+    const Naboo = new Vertex('Naboo');
+
+    const expectedSet = new Set();
+    expectedSet.add(Pandora);
+    expectedSet.add(Arendelle);
+    expectedSet.add(Metroville);
+    expectedSet.add(Narnia);
+    expectedSet.add(Monstroplolis);
+    expectedSet.add(Naboo);
+
+    graph.addVertex(Pandora);
+    graph.addVertex(Arendelle);
+    graph.addVertex(Metroville);
+    graph.addVertex(Monstroplolis);
+    graph.addVertex(Narnia);
+    graph.addVertex(Naboo);
+
+    graph.addEdge(Pandora, Arendelle);
+    graph.addEdge(Arendelle, Metroville);
+    graph.addEdge(Arendelle, Monstroplolis);
+    graph.addEdge(Metroville, Monstroplolis);
+    graph.addEdge(Metroville, Narnia);
+    graph.addEdge(Metroville, Naboo);
+    graph.addEdge(Monstroplolis, Naboo);
+    graph.addEdge(Narnia, Naboo);
+
+    expect(graph.depth(Pandora)).toEqual(expectedSet);
   });
-  it('should return false for invalid nodes', () => {
-    expect(businessTrip(graph, [Naboo, Herbalife])).toBe('false, $0');
+  it('should return an exception if the node is invalid', () => {
+    const graph = new DepthFirst();
+    expect(graph.depth(null)).toEqual('INVALID NODE');
   });
 });
